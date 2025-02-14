@@ -29,7 +29,8 @@ register_post_type('recipe', [
     'menu_icon' => 'dashicons-carrot',
     'rewrite' => [
         'slug' => 'recettes',
-    ]
+    ],
+    'supports' => ['title','editor','excerpt'],
 ]);
 
 

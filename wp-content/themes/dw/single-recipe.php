@@ -20,6 +20,8 @@
 
         <h2><?= get_the_title(); ?></h2>
 
+        <p><?= get_the_excerpt(); ?></p>
+
         <div class="recipe">
             
             <aside class="recipe__ingredients">
