@@ -5,7 +5,7 @@
     // de contenu propre à Wordpress:
     if(have_posts()): while(have_posts()): the_post(); ?>
 
-        <div><?= get_the_content(); ?></div>
+        <div><?php the_content(); ?></div>
 
     <?php 
     // On ferme "la boucle" (The Loop):
