@@ -10,6 +10,24 @@
         width: 320px;
         padding: 20px;
         background: #f1f1f1;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .recipe__fig {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 100%;
+        margin: 0;
+    }
+    .recipe__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 </style>
 
@@ -25,8 +43,13 @@
         <div class="recipe">
             
             <aside class="recipe__ingredients">
-                <h3>Ingrédients</h3>
-                <p>À compléter...</p>
+                <div>
+                    <h3>Ingrédients</h3>
+                    <p>À compléter...</p>
+                </div>
+                <figure class="recipe__fig">
+                    <?= get_the_post_thumbnail(size: 'medium', attr: ['class' => 'recipe__img']); ?>
+                </figure>
             </aside>
 
             <section class="recipe__steps">
