@@ -19,7 +19,7 @@ add_action('wp_enqueue_scripts', function() {
 }, 20);
 
 // Activer l'utilisation d'images "de couverture" sur les post_types customs.
-add_theme_support('post-thumbnails', ['recipe']);
+add_theme_support('post-thumbnails', ['recipe','trip']);
 
 // Enregistrer de nouveaux "types de contenus" qui seront stockés dans la table
 // "wp_posts", avec un identifiant de type spécifique dans la colonne "post_type":
@@ -28,10 +28,22 @@ register_post_type('recipe', [
     'label' => 'Recettes',
     'description' => 'Les recettes ramenées de nos périples',
     'public' => true,
-    'menu_position' => 6,
+    'menu_position' => 7,
     'menu_icon' => 'dashicons-carrot',
     'rewrite' => [
         'slug' => 'recettes',
+    ],
+    'supports' => ['title','editor','excerpt','thumbnail'],
+]);
+
+register_post_type('trip', [
+    'label' => 'Voyages',
+    'description' => 'Les voyages que nous avons effectués',
+    'public' => true,
+    'menu_position' => 6,
+    'menu_icon' => 'dashicons-location-alt',
+    'rewrite' => [
+        'slug' => 'voyages',
     ],
     'supports' => ['title','editor','excerpt','thumbnail'],
 ]);
