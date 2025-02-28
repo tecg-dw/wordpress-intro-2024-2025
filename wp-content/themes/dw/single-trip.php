@@ -1,6 +1,15 @@
 <?php get_header(); ?>
 
 <style type="text/css">
+    .sro {
+        position: absolute; 
+        overflow: hidden; 
+        clip: rect(0 0 0 0); 
+        height: 1px; width: 1px; 
+        margin: -1px; 
+        padding: 0; 
+        border: 0;
+    }
     .trip__header {
         height: 400px;
         width: 100%;
@@ -70,6 +79,42 @@
         height: 100%;
         object-fit: cover;
     }
+    .trip__rating {
+        display: block;
+        width: 150px;
+        height: 30px;
+        position: relative;
+        background: url(/wp-content/themes/dw/resources/img/star_empty.svg);
+        background-repeat: repeat-x;
+        background-position: 0 0;
+    }
+    .trip__rating:after {
+        content:'';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        background: url(/wp-content/themes/dw/resources/img/star_filled.svg);
+        background-repeat: repeat-x;
+        background-position: 0 0;
+    }
+    .trip__rating[data-score="1"]:after {
+        width: 30px;
+    }
+    .trip__rating[data-score="2"]:after {
+        width: 60px;
+    }
+    .trip__rating[data-score="3"]:after {
+        width: 90px;
+    }
+    .trip__rating[data-score="4"]:after {
+        width: 120px;
+    }
+    .trip__rating[data-score="5"]:after {
+        width: 100%;
+    }
 </style>
 
     <?php 
@@ -83,6 +128,9 @@
                 <div class="trip__head">        
                     <h2><?= get_the_title(); ?></h2>
                     <p><?= get_the_excerpt(); ?></p>
+                    <div class="trip__rating" data-score="4">
+                        <p class="sro">Nous avons apprécié ce voyage à hauteur de 4 étoiles sur 5.</p>
+                    </div>
                 </div>
                 <figure class="trip__back">
                     <?= get_the_post_thumbnail(size: 'trip-header', attr: ['class' => 'trip__cover']); ?>
