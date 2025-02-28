@@ -152,7 +152,9 @@
                 <aside class="trip__ingredients">
                     <div>
                         <h3>Points-clés</h3>
-                        <p>À compléter...</p>
+                        <div class="wysiwyg">
+                            <?= get_field('keypoints'); ?>
+                        </div>
                     </div>
                     <figure class="trip__fig">
                         <?= get_the_post_thumbnail(size: 'trip-side', attr: ['class' => 'trip__img']); ?>
@@ -161,7 +163,7 @@
 
                 <section class="trip__steps">
                     <h3>Récit de voyage</h3>
-                    <div><?php the_content(); ?></div>
+                    <div><?= get_field('story'); ?></div>
                 </section>
             </div>
 
