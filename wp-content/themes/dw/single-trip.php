@@ -128,14 +128,18 @@
                 <div class="trip__head">        
                     <h2><?= get_the_title(); ?></h2>
                     <p><?= get_the_excerpt(); ?></p>
-                    <div class="trip__rating" data-score="<?= get_field('rating'); ?>">
-                        <p class="sro">Nous avons apprécié ce voyage à hauteur de <?= get_field('rating'); ?> étoiles sur 5.</p>
+                    <div class="trip__rating" data-score="<?= $rating = get_field('rating'); ?>">
+                        <p class="sro">Nous avons apprécié ce voyage à hauteur de <?= $rating; ?> étoiles sur 5.</p>
                     </div>
                     <div class="trip__dates">
-                        <?php if(get_field('return')): ?>
-                        <p>Du <time datetime="<?= date('c', get_field('departure')); ?>"><?= date_i18n('j F Y', get_field('departure')); ?></time> au <time datetime="<?= date('c', get_field('return')); ?>"><?= date_i18n('j F Y', get_field('return')); ?></time>.</p>
+                        <?php 
+                        $departure = get_field('departure');
+                        $return = get_field('return');
+
+                        if($return): ?>
+                        <p>Du <time datetime="<?= date('c', $departure); ?>"><?= date_i18n('j F Y', $departure); ?></time> au <time datetime="<?= date('c', $return); ?>"><?= date_i18n('j F Y', $return); ?></time>.</p>
                         <?php else: ?>
-                        <p>Depuis le <time datetime="<?= date('c', get_field('departure')); ?>"><?= date_i18n('j F Y', get_field('departure')); ?></time>.</p>
+                        <p>Depuis le <time datetime="<?= date('c', $departure); ?>"><?= date_i18n('j F Y', $departure); ?></time>.</p>
                         <?php endif; ?>
                     </div>
                 </div>
