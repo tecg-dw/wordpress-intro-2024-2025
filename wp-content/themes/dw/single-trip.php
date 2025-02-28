@@ -128,8 +128,8 @@
                 <div class="trip__head">        
                     <h2><?= get_the_title(); ?></h2>
                     <p><?= get_the_excerpt(); ?></p>
-                    <div class="trip__rating" data-score="4">
-                        <p class="sro">Nous avons apprécié ce voyage à hauteur de 4 étoiles sur 5.</p>
+                    <div class="trip__rating" data-score="<?= get_field('rating'); ?>">
+                        <p class="sro">Nous avons apprécié ce voyage à hauteur de <?= get_field('rating'); ?> étoiles sur 5.</p>
                     </div>
                 </div>
                 <figure class="trip__back">
