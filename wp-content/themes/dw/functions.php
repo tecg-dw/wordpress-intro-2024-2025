@@ -48,7 +48,12 @@ register_post_type('trip', [
     'supports' => ['title','editor','excerpt','thumbnail'],
 ]);
 
+// Paramétrer des tailles d'images pour le générateur de thumbnails de Wordpress :
 
+// Sans recadrage :
+add_image_size('trip-side', 420, 420);
+// Avec recadrage : 
+add_image_size('trip-header', 1920, 400, true);
 
 
 
