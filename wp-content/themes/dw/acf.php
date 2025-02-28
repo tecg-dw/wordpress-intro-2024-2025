@@ -1,0 +1,102 @@
+<?php
+
+add_action( 'acf/include_fields', function() {
+    if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+        return;
+    }
+
+    acf_add_local_field_group( array(
+    'key' => 'group_67c1c24dc65a6',
+    'title' => 'Trip fields',
+    'fields' => array(
+        array(
+            'key' => 'field_67c1c24d5a89f',
+            'label' => 'Appréciation du voyage',
+            'name' => 'rating',
+            'aria-label' => '',
+            'type' => 'select',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '50',
+                'class' => '',
+                'id' => '',
+            ),
+            'choices' => array(
+                0 => '0 étoiles',
+                1 => '1 étoile',
+                2 => '2 étoiles',
+                3 => '3 étoiles',
+                4 => '4 étoiles',
+                5 => '5 étoiles',
+            ),
+            'default_value' => false,
+            'return_format' => 'value',
+            'multiple' => 0,
+            'allow_null' => 0,
+            'allow_in_bindings' => 0,
+            'ui' => 0,
+            'ajax' => 0,
+            'placeholder' => '',
+        ),
+        array(
+            'key' => 'field_67c1c3fb5a8a0',
+            'label' => 'Date de début du voyage',
+            'name' => 'departure',
+            'aria-label' => '',
+            'type' => 'date_picker',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '25',
+                'class' => '',
+                'id' => '',
+            ),
+            'display_format' => 'd/m/Y',
+            'return_format' => 'U',
+            'first_day' => 1,
+            'allow_in_bindings' => 0,
+        ),
+        array(
+            'key' => 'field_67c1c4ae5a8a1',
+            'label' => 'Date de fin du voyage',
+            'name' => 'return',
+            'aria-label' => '',
+            'type' => 'date_picker',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '25',
+                'class' => '',
+                'id' => '',
+            ),
+            'display_format' => 'd/m/Y',
+            'return_format' => 'U',
+            'first_day' => 1,
+            'allow_in_bindings' => 0,
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'trip',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'acf_after_title',
+    'style' => 'seamless',
+    'label_placement' => 'top',
+    'instruction_placement' => 'field',
+    'hide_on_screen' => '',
+    'active' => true,
+    'description' => '',
+    'show_in_rest' => 0,
+) );
+} );
+

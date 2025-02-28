@@ -1,5 +1,8 @@
 <?php
 
+// Charger la configuration de champs d'ACF :
+include_once('acf.php');
+
 // Désactiver l'éditeur de contenu en "blocks" de Wordpress, aussi appelé
 // "Gutenberg", pour revenir à une version plus ancienne mais qui nous 
 // convient mieux en tant que développeurs de thèmes:
