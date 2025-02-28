@@ -7,7 +7,7 @@ add_action( 'acf/include_fields', function() {
 
     acf_add_local_field_group( array(
     'key' => 'group_67c1c24dc65a6',
-    'title' => 'Trip fields',
+    'title' => 'Trip fields (main)',
     'fields' => array(
         array(
             'key' => 'field_67c1c24d5a89f',
@@ -138,6 +138,57 @@ add_action( 'acf/include_fields', function() {
     'hide_on_screen' => array(
         0 => 'the_content',
     ),
+    'active' => true,
+    'description' => '',
+    'show_in_rest' => 0,
+) );
+
+    acf_add_local_field_group( array(
+    'key' => 'group_67c1d72755f71',
+    'title' => 'Trip fields (side)',
+    'fields' => array(
+        array(
+            'key' => 'field_67c1d727a31b0',
+            'label' => 'Image affichée sur le côté',
+            'name' => 'side_img',
+            'aria-label' => '',
+            'type' => 'image',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'return_format' => 'id',
+            'library' => 'all',
+            'min_width' => 420,
+            'min_height' => 420,
+            'min_size' => '',
+            'max_width' => '',
+            'max_height' => '',
+            'max_size' => '',
+            'mime_types' => '',
+            'allow_in_bindings' => 0,
+            'preview_size' => 'medium',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'trip',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'side',
+    'style' => 'seamless',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
     'active' => true,
     'description' => '',
     'show_in_rest' => 0,

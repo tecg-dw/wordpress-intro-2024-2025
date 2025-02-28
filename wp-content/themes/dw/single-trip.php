@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <figure class="trip__fig">
-                        <?= get_the_post_thumbnail(size: 'trip-side', attr: ['class' => 'trip__img']); ?>
+                        <?= wp_get_attachment_image(get_field('side_img'), size: 'trip-side', attr: ['class' => 'trip__img']); ?>
                     </figure>
                 </aside>
 
