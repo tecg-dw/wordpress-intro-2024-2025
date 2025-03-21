@@ -6,6 +6,61 @@ add_action( 'acf/include_fields', function() {
     }
 
     acf_add_local_field_group( array(
+    'key' => 'group_67d3ecec66cff',
+    'title' => 'Navigation menu items',
+    'fields' => array(
+        array(
+            'key' => 'field_67d3ecec5c1ff',
+            'label' => 'Icone',
+            'name' => 'icon',
+            'aria-label' => '',
+            'type' => 'select',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'choices' => array(
+                'home' => 'Maison',
+                'plane' => 'Avion',
+                'pot' => 'Casserole',
+                'user' => 'Personnage',
+                'mail' => 'Enveloppe',
+            ),
+            'default_value' => false,
+            'return_format' => 'value',
+            'multiple' => 0,
+            'allow_null' => 0,
+            'allow_in_bindings' => 0,
+            'ui' => 0,
+            'ajax' => 0,
+            'placeholder' => '',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'nav_menu_item',
+                'operator' => '==',
+                'value' => 'location/header',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => true,
+    'description' => '',
+    'show_in_rest' => 0,
+) );
+
+    acf_add_local_field_group( array(
     'key' => 'group_67c1c24dc65a6',
     'title' => 'Trip fields (main)',
     'fields' => array(

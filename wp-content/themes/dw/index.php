@@ -6,11 +6,11 @@
 
         <h2><?= get_the_title(); ?></h2>
 
-        <div><?php the_content(); ?></div>
+        <div><?= get_the_content(); ?></div>
 
-    <?php 
+    <?php
     // On ferme "la boucle" (The Loop):
     endwhile; else: ?>
-        <p>Pas de contenu à afficher.</p>
+    <p>La page est vide.</p>
     <?php endif; ?>
 <?php get_footer(); ?>
