@@ -132,6 +132,16 @@ add_action('admin_post_nopriv_dw_contact_form_submit', 'dw_handle_contact_form_s
 
 require_once(__DIR__.'/forms/ContactForm.php');
 
+register_post_type('contact_message', [
+    'label' => 'Messages',
+    'description' => 'Les formulaires envoyés sur la page de contact',
+    'public' => false,
+    'show_ui' => true,
+    'menu_position' => 10,
+    'menu_icon' => 'dashicons-email',
+    'supports' => ['title','editor'],
+]);
+
 function dw_handle_contact_form_submit()
 {
     (new DW_Theme\Forms\ContactForm())

@@ -42,13 +42,20 @@ class ContactForm
         // Nettoyer les données (sanitize).
         $data = $this->cleanData($data);
 
-        // Sauvegarder l'envoi de formulaire en base de données.
         // Envoyer un mail de notification.
         wp_mail(
             to: 'toon@whitecube.be',
             subject: 'Nouveau message "'.$data['subject'].'"',
             message: $this->generateMailContent($data),
         );
+
+        // Sauvegarder l'envoi de formulaire en base de données.
+        wp_insert_post([
+            'post_type' => 'contact_message',
+            'post_status' => 'publish',
+            'post_title' => $data['firstname'].' '.$data['lastname'],
+            'post_content' => $this->generateMailContent($data),
+        ]);
 
         // Renvoyer l'utilisateur vers la page précédente (où se trouvait le formulaire) afin d'y afficher un message de succès (feedback).
         $_SESSION['dw_contact_form_success'] = 'Merci '.$data['firstname'].', votre message a bien été envoyé.';
