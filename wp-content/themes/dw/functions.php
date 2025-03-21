@@ -3,6 +3,11 @@
 // Charger la configuration de champs d'ACF :
 include_once('acf.php');
 
+// Activer la session PHP
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Désactiver l'éditeur de contenu en "blocks" de Wordpress, aussi appelé
 // "Gutenberg", pour revenir à une version plus ancienne mais qui nous 
 // convient mieux en tant que développeurs de thèmes:
@@ -125,9 +130,19 @@ function dw_get_navigation_links(string $location): array
 add_action('admin_post_dw_contact_form_submit', 'dw_handle_contact_form_submit');
 add_action('admin_post_nopriv_dw_contact_form_submit', 'dw_handle_contact_form_submit');
 
+require_once(__DIR__.'/forms/ContactForm.php');
+
 function dw_handle_contact_form_submit()
 {
-    var_dump($_POST); die();
+    (new DW_Theme\Forms\ContactForm())
+        ->rule('firstname', 'required')
+        ->rule('lastname', 'required')
+        ->rule('email', 'required')
+        ->rule('email', 'valid_email')
+        ->rule('subject', 'required')
+        ->rule('message', 'required')
+        ->rule('message', 'no_test')
+        ->handle($_POST);
 }
 
 
