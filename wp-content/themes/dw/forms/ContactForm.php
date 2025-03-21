@@ -5,6 +5,7 @@ namespace DW_Theme\Forms;
 class ContactForm
 {
     protected array $rules = [];
+    protected array $sanitizers = [];
 
     public function __construct()
     {
@@ -21,6 +22,13 @@ class ContactForm
         return $this;
     }
 
+    public function sanitize(string $field, string $callback): static
+    {
+        $this->sanitizers[$field] = $callback;
+
+        return $this;
+    }
+
     public function handle(array $data): void
     {
         // Valider les données envoyées.
@@ -30,10 +38,17 @@ class ContactForm
             wp_safe_redirect($_SERVER['HTTP_REFERER']);
             exit;
         }
+
         // Nettoyer les données (sanitize).
+        $data = $this->cleanData($data);
+
         // Sauvegarder l'envoi de formulaire en base de données.
         // Envoyer un mail de notification.
+
         // Renvoyer l'utilisateur vers la page précédente (où se trouvait le formulaire) afin d'y afficher un message de succès (feedback).
+        $_SESSION['dw_contact_form_success'] = 'Merci '.$data['firstname'].', votre message a bien été envoyé.';
+        wp_safe_redirect($_SERVER['HTTP_REFERER']);
+        exit;
     }
 
     protected function validate(array $data): bool|array
@@ -82,6 +97,17 @@ class ContactForm
         }
 
         return 'Ce champ ne peut pas contenir le mot "test".';
+    }
+
+    protected function cleanData(array $data): array
+    {
+        $cleaned = [];
+
+        foreach ($this->sanitizers as $field => $callback) {
+            $cleaned[$field] = call_user_func($callback, $data[$field] ?? null);
+        }
+
+        return $cleaned;
     }
 
 }

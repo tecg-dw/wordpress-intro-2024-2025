@@ -142,6 +142,11 @@ function dw_handle_contact_form_submit()
         ->rule('subject', 'required')
         ->rule('message', 'required')
         ->rule('message', 'no_test')
+        ->sanitize('firstname', 'sanitize_text_field')
+        ->sanitize('lastname', 'sanitize_text_field')
+        ->sanitize('email', 'sanitize_text_field')
+        ->sanitize('subject', 'sanitize_text_field')
+        ->sanitize('message', 'sanitize_textarea_field')
         ->handle($_POST);
 }
 

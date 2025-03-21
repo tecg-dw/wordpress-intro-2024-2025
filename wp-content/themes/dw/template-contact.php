@@ -16,7 +16,12 @@
                 $errors = $_SESSION['dw_contact_form_errors'] ?? [];
                 unset($_SESSION['dw_contact_form_errors']);
 
-                ?>
+                $success = $_SESSION['dw_contact_form_success'] ?? false;
+                unset($_SESSION['dw_contact_form_success']);
+
+                if($success): ?>
+                <p class="contact__success"><?= $success; ?></p>
+                <?php else: ?>
                 <form action="<?= esc_url(admin_url('admin-post.php')); ?>" method="POST" class="form">
                     <fieldset class="form__fields">
                         <div class="field">
@@ -63,6 +68,7 @@
                         <button type="submit" class="btn">Envoyer</button>
                     </div>
                 </form>
+                <?php endif; ?>
             </div>
         </section>
 
