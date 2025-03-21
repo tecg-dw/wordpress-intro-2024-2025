@@ -44,6 +44,11 @@ class ContactForm
 
         // Sauvegarder l'envoi de formulaire en base de données.
         // Envoyer un mail de notification.
+        wp_mail(
+            to: 'toon@whitecube.be',
+            subject: 'Nouveau message "'.$data['subject'].'"',
+            message: $this->generateMailContent($data),
+        );
 
         // Renvoyer l'utilisateur vers la page précédente (où se trouvait le formulaire) afin d'y afficher un message de succès (feedback).
         $_SESSION['dw_contact_form_success'] = 'Merci '.$data['firstname'].', votre message a bien été envoyé.';
@@ -108,6 +113,18 @@ class ContactForm
         }
 
         return $cleaned;
+    }
+
+    protected function generateMailContent(array $data): string
+    {
+        return 'Bonjour,'.PHP_EOL.PHP_EOL
+            .'Un nouveau message a été envoyé par le formulaire de contact.'.PHP_EOL.PHP_EOL
+            .'Nom: '.$data['lastname'].PHP_EOL
+            .'Prénom: '.$data['firstname'].PHP_EOL
+            .'E-mail: '.$data['email'].PHP_EOL
+            .'Sujet: '.$data['subject'].PHP_EOL
+            .'Message:'.PHP_EOL
+            .$data['message'];
     }
 
 }
