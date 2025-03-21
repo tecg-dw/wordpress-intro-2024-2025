@@ -119,3 +119,24 @@ function dw_get_navigation_links(string $location): array
 
     return $links;
 }
+
+// Ajouter une fonctionnalité de formulaire de contact totalement sur-mesure:
+
+add_action('admin_post_dw_contact_form_submit', 'dw_handle_contact_form_submit');
+add_action('admin_post_nopriv_dw_contact_form_submit', 'dw_handle_contact_form_submit');
+
+function dw_handle_contact_form_submit()
+{
+    var_dump($_POST); die();
+}
+
+
+
+
+
+
+
+
+
+
+
